@@ -1,18 +1,26 @@
 import os
 import PyPDF2
 
-print("##### Started program PDF-Detective #####")
+# The main function.
+def main():
+    print("##### Started program PDF-Detective #####")
 
-# Check if 'pdf_folder' exists. If not, create one.
-if os.path.isdir("pdf_folder") == False:
-    os.mkdir("pdf_folder")
-    print("There was no 'pdf_folder', but it was just created. Copy the PDF files into 'pdf_folder' and restart the program.")
 
-# search_input = "the"
-search_input = input("What word would you like to search for? ")
+    # Check if 'pdf_folder' exists. If not, create one.
+    if os.path.isdir("pdf_folder") == False:
+        os.mkdir("pdf_folder")
+        print("There was no 'pdf_folder', but it was just created. Copy the PDF files into 'pdf_folder' and restart the program.")
+    else:
+        find_pdf_files("pdf_folder")
 
-# Dictionary to contain file name and file location
-dictionary_of_pdf_files = {}
+        if len(dictionary_of_pdf_files) == 0:
+            print("There are no PDF files in the 'pdf_folder'. Copy some files there and restart the program.")
+        else:
+            # Ask the user to enter the search word and launch search.
+            # search_input = "test_word"
+            search_input = input("What would you like to search for? ")
+            analyse_pdf_files(search_input)
+            print("##### Analysis completed. Please find the results above. #####")
 
 # Find all PDF files and store them in a dictionary.
 def find_pdf_files(folder_location):
@@ -29,15 +37,9 @@ def find_pdf_files(folder_location):
             else:
                 print("Found non-PDF file: %s, it will be ignored." % filename)
 
-
-        if len(dictionary_of_pdf_files) == 0:
-            print("There are no PDF files in 'pdf_folder'. Copy some  files there and restart the program.")
-        # else:
-            # print("Dictionary of PDF files: %s" % dictionary_of_pdf_files)
-
     return(dictionary_of_pdf_files)
 
-
+# Analyse the PDF files from dictionary.
 def analyse_pdf_files(search_word):
     print("===== Analysing PDF files =====")
 
@@ -56,7 +58,7 @@ def analyse_pdf_files(search_word):
                 pageText = pageObj.extractText()
 
                 # Search each page for 'search_word'. Search should be case-insensitive.
-                if search_word.lower() in pageText.lower():
+                if search_word.lower().encode() in pageText.lower().encode():
                     print("Found '%s' on page %s." % (search_word, pageNum + 1))
                     counter += 1
             except:
@@ -69,13 +71,10 @@ def analyse_pdf_files(search_word):
             print("Found %s instances of word '%s'." % (counter, search_word))
 
 
-# TODO: No need to always call all functions. E.g., if the program detects there is no 'pdf_folder', it does not need to call function 'analyse_pdf_files()'.
-find_pdf_files("pdf_folder")
+# Dictionary to contain filename and location
+dictionary_of_pdf_files = {}
 
-print("Tocka 1", dictionary_of_pdf_files)
 
-analyse_pdf_files(search_input)
-
-print("##### Analysis completed. Please find the results above. #####")
+main()
 
 # TODO: Check if search works with two or more words seperated by a space.

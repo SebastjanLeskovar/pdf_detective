@@ -1,7 +1,7 @@
 First push: 01.11.2018
 Sebastjan Leskovar - [sebastjan.leskovar@gmail.com](mailto:sebastjan.leskovar@gmail.com) - [github.com/SebastjanLeskovar](https://github.com/SebastjanLeskovar)
 
-# PDF-Detective
+# PDF Detective
 
 A small Python program for analysing PDF files. The program analyses a large number of PDF files for a specific word.
 
@@ -11,7 +11,7 @@ A small Python program for analysing PDF files. The program analyses a large num
 
 ### Prerequisites
 
-As of version v1.0, the following prerequisites are necessary to run this program:
+As of version V1.0, the following prerequisites are necessary to run this program:
 - Python 3.x
 - PyPDF2 1.26.0
 
