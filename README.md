@@ -41,13 +41,17 @@ Launch the program with the followind command:
 
 ## Versioning
 
-### V4.0
+### V5.0
 
 * Implement Tkinter GUI.
 
-### V3.0
+### V4.0
 
 * Implement classes.
+
+### V3.0
+
+* Implement PDF to text conversion.
 
 ### V2.0
 
@@ -65,6 +69,9 @@ This will remove Bug #1.
 * Case-insensitive search.
 * Check if 'pdf_folder' exists. If it does not, create one.
 * Add word counter for each separate PDF.
+
+## Implementing PDF to text conversion
+Initially, a conversion of any sorts was not planned. The reason for this implementation are many problems that occur with searching PDF files, such as: search not working, different errors in some files or pages, encoding problems etc. A PDF to text conversion might also speed-up the search process, which currently takes too long.
 
 ## Bugs and Issues
 
